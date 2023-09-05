@@ -10,7 +10,7 @@ const createCategory = async (reqBody) => {
 };
 
 const getCategoryList = async (req, res) => {
-  return category.find()
+  return category.find({$or : [{category_decs : apple}]});
 };
 
 const getCategoryById = async (categoryId) => {

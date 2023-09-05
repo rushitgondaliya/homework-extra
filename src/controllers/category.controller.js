@@ -64,6 +64,30 @@ const getCategoryDetails = async (req, res) => {
   }
 };
 
+/** update category */
+const updatecategory = async (req, res) => {
+  try {
+    const categoryId = req.params.categoryId;
+
+    const cateExists = await categoryService.getCategoryList(categoryId);
+    if (!cateExists) {
+      throw new Error("Category not found!");
+    }
+
+    await categoryService.updateDetails(categoryId, req.body);
+
+    res.status(200).json({
+      success: true,
+      message: "Category details update successfully!",
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 /** delete Category */
 
 const deleteRecord = async (req, res) => {
@@ -79,30 +103,6 @@ const deleteRecord = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Category delete successfully!",
-    });
-  } catch (error) {
-    res.status(400).json({
-      success: false,
-      message: error.message,
-    });
-  }
-};
-
-
-const updatecategory = async (req, res) => {
-  try {
-    const categoryId = req.params.categoryId;
-
-    const cateExists = await categoryService.getCategoryList(categoryId);
-    if (!cateExists) {
-      throw new Error("Category not found!");
-    }
-
-    await categoryService.updateDetails(categoryId, req.body);
-
-    res.status(200).json({
-      success: true,
-      message: "Category details update successfully!",
     });
   } catch (error) {
     res.status(400).json({

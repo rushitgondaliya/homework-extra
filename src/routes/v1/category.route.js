@@ -1,7 +1,5 @@
 const express = require("express");
-// const { userValidation } = require("../../validations");
 const { categoryController } = require("../../controllers");
-// const validate = require("../../middlewares/validation");
 
 const router = express.Router();
 
@@ -33,7 +31,5 @@ router.put(
   "/update-category/:categoryId",
   categoryController.updatecategory
 )
-
-
 
 module.exports = router;

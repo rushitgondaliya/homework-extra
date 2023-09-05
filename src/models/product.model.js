@@ -34,14 +34,6 @@ const productSchema = new mongoose.Schema(
             type: mongoose.Types.ObjectId,
             ref: "category"
         },
-        Jewellery: {
-            type: mongoose.Types.ObjectId,
-            ref: "Jewellery"
-        },
-        Grocery: {
-            type: mongoose.Types.ObjectId,
-            ref: "Grocery"
-        },
     },
     {
         timestamps: true,
